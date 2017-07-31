@@ -89,7 +89,7 @@ static int show_copyright(short card) {
 	} else if (units==3) {
 		strncpy(units_str,"1000 lbs\0",8);
 	} else {
-		sprintf(units_str,"Unknown (id %d)",units);
+		sprintf(units_str,"Unk(id %d)",units);
 	}
 	printk(KERN_INFO "jr3pci(%d): %s\n",card,copyright);
 	printk(KERN_INFO "jr3pci(%d): DSP Software updated day %d, year %d. Units: %s\n",card,day,year,units_str);
@@ -139,7 +139,6 @@ int jr3pci_probe(void) {
 		if (!pci_enable_device(pci)) {
 				memregion = pci_resource_start(pci, 0);
 				size = pci_resource_len(pci,0);
-				if (!check_mem_region(memregion,size))
 				  if (request_mem_region(memregion,size,"JR3pci")) {
 					jr3_base_address=ioremap(memregion,size);
 					printk(KERN_INFO "jr3pci: mem mapped succesfully\n");

@@ -1,5 +1,5 @@
 #include "jr3pci-ioctl.h"
-
+#include <linux/uaccess.h>
 void __iomem *jr3_base_address;
 
 /** Board address to PCI virtual address conversion */
